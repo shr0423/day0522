@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper {
+            width: 120px;
+            height: 320px;
+            background: yellow;
+            position: relative;
+        }
+    </style>
+    <script>
+        let arr = new Array(5);
+        let flag = true;
+        function init() {
+
+            for (let i = 0; i < arr.length; i++) {
+                let box = document.createElement("div");
+                box.style.width = 120 + "px";
+                box.style.height = 100 + "px";
+                box.style.background = "pink";
+                box.style.position = "absolute";
+                box.style.top = -105 + 105 * i + "px";
+                box.innerText = i;
+                arr[i] = box;
+
+                let wrapper = document.getElementById("wrapper");
+                wrapper.appendChild(box);
+            }
+        }
+        function move() {
+            if (flag) {
+                for (let i = 0; i < arr.length; i++) {
+                    arr[i].style.top = parseInt(arr[i].style.top) +1+ "px";
+                    arr[i].innerText = parseInt(arr[i].style.top);
+
+                    if (parseInt(arr[i].style.top) > 420) {
+                        arr[i].style.top = -105 + "px";
+                    }
+                    console.log( arr[i].style.top );
+                }
+            }
+        }
+        addEventListener("load", function () {
+            init();
+            setInterval("move()", 100);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrapper"> </div>
+</body>
+
+</html>
